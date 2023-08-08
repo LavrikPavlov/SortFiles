@@ -41,6 +41,9 @@ public class WorkWithArrayInt {
         } catch (IllegalArgumentException e) {
             System.out.println("Ошибка: " + e + "\n");
             return null;
+        } catch (NullPointerException e) {
+            System.out.println("Ошибка: " + e + "\n");
+            return null;
         }
     }
 

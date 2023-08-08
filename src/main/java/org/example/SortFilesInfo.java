@@ -1,5 +1,6 @@
 package org.example;
 
+import java.io.File;
 import java.util.Arrays;
 
 public class SortFilesInfo {
@@ -8,20 +9,26 @@ public class SortFilesInfo {
     public static void main(String[] args) {
 
         WorkWithArrayInt wwa = new WorkWithArrayInt();
+        WorkWithFile wwf = new WorkWithFile("in.txt");
 
-        int[] arr1 = new int[RandNumber()];
-        int[] arr2 = new int[0];
-        int[] arr3 = new int[RandNumber()];
 
-        for (int i = 0; i < arr1.length; i++) {
-            arr1[i] = RandNumber();
-        }
-        for (int i = 0; i < arr2.length; i++) {
-            arr2[i] = RandNumber();
-        }
-        for (int i = 0; i < arr3.length; i++) {
-            arr3[i] = RandNumber();
-        }
+
+        int[][] arrs = wwf.openFile(true);
+        int[] arr1 = arrs[0];
+        int[] arr2 = arrs[1];
+        int[] arr3 = arrs[2];
+
+
+//
+//        for (int i = 0; i < arr1.length; i++) {
+//            arr1[i] = RandNumber();
+//        }
+//        for (int i = 0; i < arr2.length; i++) {
+//            arr2[i] = RandNumber();
+//        }
+//        for (int i = 0; i < arr3.length; i++) {
+//            arr3[i] = RandNumber();
+//        }
 
         System.out.println(Arrays.toString(arr1));
         System.out.println(Arrays.toString(arr2));
@@ -54,5 +61,7 @@ public class SortFilesInfo {
         num *= 10;
         return (int) num;
     }
+
+
 
 }

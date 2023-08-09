@@ -10,7 +10,6 @@ public class SortFilesInfo {
         WorkWithFile wwf = new WorkWithFile("","", "in3.txt");
         WorkWithArrayInt wwa = new WorkWithArrayInt();
 
-
         int[][] arrs = wwf.openFile();
         int[] arr1 = arrs[0];
         int[] arr2 = arrs[1];
@@ -37,7 +36,7 @@ public class SortFilesInfo {
         arr2 = wwa.SortMass(arr2);
         arr3 = wwa.SortMass(arr3);
 
-                System.out.println(Arrays.toString(arr1));
+        System.out.println(Arrays.toString(arr1));
         System.out.println(Arrays.toString(arr2));
         System.out.println(Arrays.toString(arr3));
         System.out.println("-----\n");

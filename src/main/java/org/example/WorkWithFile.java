@@ -5,15 +5,18 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class WorkWithFile {
 
 
     private File file1, file2, file3;
     private final String path = "\\SortFiles\\src\\files\\";
 
+
     public WorkWithFile() {
         OpenFile();
     }
+
 
     public WorkWithFile(String name1, String name2, String name3) throws FileNotFoundException {
         this.file1 = new File(path + name1);
@@ -22,16 +25,19 @@ public class WorkWithFile {
         openFile();
     }
 
+
     public WorkWithFile(String name1, String name2) {
         this.file1 = new File(path + name1);
         this.file2 = new File(path + name2);
         openFile();
     }
 
+
     public WorkWithFile(String name) {
         this.file1 = new File(path + name);
         openFile();
     }
+
 
     public void writeInFile(int[] arr) {
         String nameFile = "out.txt";
@@ -54,6 +60,7 @@ public class WorkWithFile {
         }
     }
 
+
     public void writeNameFile(String nameOne, String nameTwo, String nameThree) {
         if (!nameOne.isEmpty()) {
             this.file1 = new File(path + nameOne);
@@ -65,6 +72,7 @@ public class WorkWithFile {
             this.file3 = new File(path + nameThree);
         }
     }
+
 
     protected int[][] openFile() {
         int[] arr1;
@@ -88,9 +96,11 @@ public class WorkWithFile {
         return new int[][]{arr1, arr2, arr3};
     }
 
+
     private static void OpenFile() {
         System.out.println("Не были указаны файлы");
     }
+
 
     private static int[] workWithFile(File file) {
         try {
@@ -119,6 +129,7 @@ public class WorkWithFile {
         }
     }
 
+
     private static boolean isNumeric(String str) {
         try {
             Integer.parseInt(str);
@@ -128,9 +139,9 @@ public class WorkWithFile {
         }
     }
 
+
     private static String[] splitString(String s) {
-        String numbers = "";
-        String letters = "";
+        String numbers = "", letters = "";
         int i = 0;
         while (i < s.length()) {
             if(Character.isDigit(s.charAt(i)) || (s.charAt(i) == '-' && numbers.isEmpty()))

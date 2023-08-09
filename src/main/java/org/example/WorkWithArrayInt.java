@@ -11,6 +11,7 @@ public class WorkWithArrayInt {
         }
     }
 
+
     public static int[] combineMassOut(int[] arr1, int[] arr2) {
         try {
             return CheckNullArrays(arr1, arr2);
@@ -20,6 +21,7 @@ public class WorkWithArrayInt {
         }
     }
 
+
     public static int[] combineMassOut(int[] arr) {
         try {
             return CheckNullArrays(arr);
@@ -28,6 +30,7 @@ public class WorkWithArrayInt {
             return null;
         }
     }
+
 
     public int[] reverseMass(int[] arr) {
         try {
@@ -44,6 +47,7 @@ public class WorkWithArrayInt {
         }
     }
 
+
     public static int[] combineMassOut() {
         try {
             return new int[0];
@@ -52,6 +56,7 @@ public class WorkWithArrayInt {
             return null;
         }
     }
+
 
     public int[] SortMass(int[] arr) {
         try {
@@ -72,6 +77,7 @@ public class WorkWithArrayInt {
             return null;
         }
     }
+
 
     private static int[] DeleteDublicateArray(int[] arr) {
         try {
@@ -99,6 +105,7 @@ public class WorkWithArrayInt {
             return null;
         }
     }
+
 
     private static int[] CheckNullArrays(int[]... arrays) {
         try {

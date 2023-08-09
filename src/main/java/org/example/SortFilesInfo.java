@@ -7,7 +7,7 @@ public class SortFilesInfo {
 
     public static void main(String[] args) throws FileNotFoundException {
 
-        WorkWithFile wwf = new WorkWithFile("in1.txt", "in2.txt", "in3.txt");
+        WorkWithFile wwf = new WorkWithFile("","", "in3.txt");
         WorkWithArrayInt wwa = new WorkWithArrayInt();
 
 

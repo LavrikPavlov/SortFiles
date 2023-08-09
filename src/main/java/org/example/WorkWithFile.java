@@ -9,7 +9,7 @@ public class WorkWithFile {
 
 
     private File file1, file2, file3;
-    private final String path = "E:\\SortFiles\\src\\files\\";
+    private final String path = "\\SortFiles\\src\\files\\";
 
     public WorkWithFile() {
         OpenFile();
@@ -134,9 +134,9 @@ public class WorkWithFile {
         int i = 0;
         while (i < s.length()) {
             if(Character.isDigit(s.charAt(i)) || (s.charAt(i) == '-' && numbers.isEmpty()))
-                numbers = numbers + s.charAt(i);
+                numbers += s.charAt(i);
             else
-                letters = letters + s.charAt(i);
+                letters += s.charAt(i);
             i++;
         }
         return new String[] {numbers,letters};

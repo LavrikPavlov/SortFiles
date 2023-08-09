@@ -1,14 +1,14 @@
 package org.example;
 
+import java.io.FileNotFoundException;
 import java.util.Arrays;
 
 public class SortFilesInfo {
 
+    public static void main(String[] args) throws FileNotFoundException {
 
-    public static void main(String[] args) {
-
+        WorkWithFile wwf = new WorkWithFile("in1.txt", "in2.txt", "in3.txt");
         WorkWithArrayInt wwa = new WorkWithArrayInt();
-        WorkWithFile wwf = new WorkWithFile("in5.txt", "in7.txt");
 
 
 

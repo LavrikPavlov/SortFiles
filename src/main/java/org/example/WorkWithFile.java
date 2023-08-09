@@ -42,7 +42,7 @@ public class WorkWithFile {
             }
 
             FileWriter fw = new FileWriter(path + nameFile);
-            if(arr != null) {
+            if (arr != null) {
                 for (int num : arr)
                     fw.write(num + "\n");
             } else
@@ -95,21 +95,37 @@ public class WorkWithFile {
     private static int[] workWithFile(File file) {
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
-            List<String> lines = new ArrayList<String>();
+            List<Integer> lines = new ArrayList<Integer>();
             String line;
 
             while ((line = br.readLine()) != null) {
-                lines.add(line);
+                String[] tokens = line.split("\\s+");
+                for (String token : tokens) {
+                    if (isNumeric(token)) {
+                        int numb = Integer.parseInt(token);
+                        lines.add(numb);
+                    }
+                }
+
             }
             br.close();
 
             int[] arr = new int[lines.size()];
             for (int i = 0; i < lines.size(); i++)
-                arr[i] = Integer.parseInt(lines.get(i));
+                arr[i] = lines.get(i);
             return arr;
         } catch (IOException | NumberFormatException e) {
             System.out.println("Ошибка: " + e);
             return null;
+        }
+    }
+
+    private static boolean isNumeric(String str) {
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
         }
     }
 

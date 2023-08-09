@@ -95,24 +95,23 @@ public class WorkWithFile {
     private static int[] workWithFile(File file) {
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
-            List<Integer> lines = new ArrayList<Integer>();
+            List<String> lines = new ArrayList<String>();
             String line;
 
             while ((line = br.readLine()) != null) {
-                String[] tokens = line.split("\\s+");
-                for (String token : tokens) {
-                    if (isNumeric(token)) {
-                        int numb = Integer.parseInt(token);
-                        lines.add(numb);
-                    }
+                if (!isNumeric(line)) {
+                    String[] numbAndString = splitString(line);
+                    if(!numbAndString[0].isEmpty())
+                        lines.add(numbAndString[0]);
                 }
-
+                else
+                    lines.add(line);
             }
             br.close();
 
             int[] arr = new int[lines.size()];
             for (int i = 0; i < lines.size(); i++)
-                arr[i] = lines.get(i);
+                arr[i] = Integer.parseInt(lines.get(i));
             return arr;
         } catch (IOException | NumberFormatException e) {
             System.out.println("Ошибка: " + e);
@@ -129,4 +128,18 @@ public class WorkWithFile {
         }
     }
 
+    private static String[] splitString(String s) {
+        String numbers = "";
+        String letters = "";
+        int i = 0;
+        while (i < s.length()) {
+            if(Character.isDigit(s.charAt(i)) || (s.charAt(i) == '-' && numbers.isEmpty()))
+                numbers = numbers + s.charAt(i);
+            else
+                letters = letters + s.charAt(i);
+            i++;
+        }
+        return new String[] {numbers,letters};
+    }
 }
+

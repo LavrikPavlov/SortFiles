@@ -11,14 +11,13 @@ public class SortFilesInfo {
         WorkWithArrayInt wwa = new WorkWithArrayInt();
 
 
-
         int[][] arrs = wwf.openFile();
         int[] arr1 = arrs[0];
         int[] arr2 = arrs[1];
         int[] arr3 = arrs[2];
 
 
-//
+        //
 //        for (int i = 0; i < arr1.length; i++) {
 //            arr1[i] = RandNumber();
 //        }
@@ -38,14 +37,12 @@ public class SortFilesInfo {
         arr2 = wwa.SortMass(arr2);
         arr3 = wwa.SortMass(arr3);
 
-        System.out.println(Arrays.toString(arr1));
+                System.out.println(Arrays.toString(arr1));
         System.out.println(Arrays.toString(arr2));
         System.out.println(Arrays.toString(arr3));
         System.out.println("-----\n");
 
         int[] arrOut = wwa.combineMassOut(arr1, arr2, arr3);
-
-
 
         System.out.println(Arrays.toString(arrOut));
         arrOut = wwa.SortMass(arrOut);
@@ -62,7 +59,6 @@ public class SortFilesInfo {
         num *= 10;
         return (int) num;
     }
-
 
 
 }

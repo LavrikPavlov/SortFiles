@@ -1,95 +1,117 @@
 package org.example;
 
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class WorkWithFile {
 
 
     private File file1, file2, file3;
+    private final String path = "E:\\SortFiles\\src\\files\\";
 
     public WorkWithFile() {
         OpenFile();
     }
 
-    public WorkWithFile(String name1, String name2, String name3) {
-        this.file1 = new File(name1);
-        this.file2 = new File(name2);
-        this.file3 = new File(name3);
-        openFile(true);
+    public WorkWithFile(String name1, String name2, String name3) throws FileNotFoundException {
+        this.file1 = new File(path + name1);
+        this.file2 = new File(path + name2);
+        this.file3 = new File(path + name3);
+        openFile();
     }
 
     public WorkWithFile(String name1, String name2) {
-        this.file1 = new File(name1);
-        this.file2 = new File(name2);
-        openFile(true);
+        this.file1 = new File(path + name1);
+        this.file2 = new File(path + name2);
+        openFile();
     }
 
     public WorkWithFile(String name) {
-        this.file1 = new File(name);;
-        openFile(true);
+        this.file1 = new File(path + name);
+        openFile();
     }
 
+    public void writeInFile(int[] arr) {
+        String nameFile = "out.txt";
+        try {
+            File fileOut = new File(path + nameFile);
+            if (!fileOut.exists()) {
+                fileOut.createNewFile();
+            }
 
-    public void writeNameFile(String nameOne, String nameTwo, String nameThree){
+            FileWriter fw = new FileWriter(path + nameFile);
+            if(arr != null) {
+                for (int num : arr)
+                    fw.write(num + "\n");
+            } else
+                fw.write("null");
+            fw.close();
+
+        } catch (IOException e) {
+            System.out.println("Ошибка: " + e);
+        }
+    }
+
+    public void writeNameFile(String nameOne, String nameTwo, String nameThree) {
         if (!nameOne.isEmpty()) {
-            this.file1 = new File(nameOne);
+            this.file1 = new File(path + nameOne);
         }
         if (!nameTwo.isEmpty()) {
-            this.file2 = new File(nameTwo);
+            this.file2 = new File(path + nameTwo);
         }
         if (!nameThree.isEmpty()) {
-            this.file3 = new File(nameThree);
+            this.file3 = new File(path + nameThree);
         }
     }
 
-    public int[][] openFile(boolean res) {
+    protected int[][] openFile() {
         int[] arr1;
-        if(file1 != null)
-            arr1 = WorkWithFile(file1);
+        if (file1 != null)
+            arr1 = workWithFile(file1);
         else
             arr1 = null;
 
         int[] arr2;
-        if(file2 != null)
-            arr2 = WorkWithFile(file2);
+        if (file2 != null)
+            arr2 = workWithFile(file2);
         else
             arr2 = null;
 
         int[] arr3;
-        if(file3 != null)
-            arr3 = WorkWithFile(file3);
+        if (file3 != null)
+            arr3 = workWithFile(file3);
         else
             arr3 = null;
 
         return new int[][]{arr1, arr2, arr3};
     }
 
-    public static void OpenFile() {
+    private static void OpenFile() {
         System.out.println("Не были указаны файлы");
     }
 
-    public static int[] WorkWithFile(File file) {
-        List<Integer> dataList = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+    private static int[] workWithFile(File file) {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            List<String> lines = new ArrayList<String>();
             String line;
-            while ((line = reader.readLine()) != null) {
-                int data = Integer.parseInt(line);
-                dataList.add(data);
-            }
-        } catch (IOException e) {
-            System.out.println("Ошибка чтения файла: " + e);
-        }
 
-        int[] dataArray = new int[dataList.size()];
-        for (int i = 0; i < dataList.size(); i++) {
-            dataArray[i] = dataList.get(i);
+            while ((line = br.readLine()) != null) {
+                lines.add(line);
+            }
+            br.close();
+
+            int[] arr = new int[lines.size()];
+            for (int i = 0; i < lines.size(); i++)
+                arr[i] = Integer.parseInt(lines.get(i));
+            return arr;
+        } catch (IOException | NumberFormatException e) {
+            System.out.println("Ошибка: " + e);
+            return null;
         }
-        return dataArray;
     }
+
 }

@@ -29,7 +29,7 @@ public class WorkWithArrayInt {
         }
     }
 
-    public int[] reverseMass(int[] arr){
+    public int[] reverseMass(int[] arr) {
         try {
             int[] arrayRevers = new int[arr.length];
             int j = 0;
@@ -38,10 +38,7 @@ public class WorkWithArrayInt {
                 j++;
             }
             return arrayRevers;
-        } catch (IllegalArgumentException e) {
-            System.out.println("Ошибка: " + e + "\n");
-            return null;
-        } catch (NullPointerException e) {
+        } catch (IllegalArgumentException | NullPointerException e) {
             System.out.println("Ошибка: " + e + "\n");
             return null;
         }
@@ -132,7 +129,6 @@ public class WorkWithArrayInt {
             return null;
         }
     }
-
 
 
 //    private static int[] CheckNullArrays(int[] arr1, int[] arr2, int[] arr3) {

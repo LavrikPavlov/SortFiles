@@ -1,6 +1,5 @@
 package org.example;
 
-import java.io.File;
 import java.util.Arrays;
 
 public class SortFilesInfo {
@@ -9,11 +8,11 @@ public class SortFilesInfo {
     public static void main(String[] args) {
 
         WorkWithArrayInt wwa = new WorkWithArrayInt();
-        WorkWithFile wwf = new WorkWithFile("in.txt");
+        WorkWithFile wwf = new WorkWithFile("in5.txt", "in7.txt");
 
 
 
-        int[][] arrs = wwf.openFile(true);
+        int[][] arrs = wwf.openFile();
         int[] arr1 = arrs[0];
         int[] arr2 = arrs[1];
         int[] arr3 = arrs[2];
@@ -53,6 +52,8 @@ public class SortFilesInfo {
         System.out.println("Ответ по убыванию: " + Arrays.toString(arrOut));
         arrOut = wwa.reverseMass(arrOut);
         System.out.println("Ответ по возрастанию: " + Arrays.toString(arrOut));
+
+        wwf.writeInFile(arrOut);
 
     }
 

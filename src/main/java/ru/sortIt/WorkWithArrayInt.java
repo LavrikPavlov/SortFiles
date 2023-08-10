@@ -118,26 +118,4 @@ public class WorkWithArrayInt {
     }
 
 
-//    private static int[] CheckNullArrays(int[] arr1, int[] arr2, int[] arr3) {
-//        try {
-//            if (arr1 == null && arr2 != null && arr3 != null)
-//                return MassOut(arr2, arr3);
-//            else if (arr1 != null && arr2 == null && arr3 != null)
-//                return MassOut(arr1, arr3);
-//            else if (arr1 != null && arr2 != null && arr3 == null)
-//                return MassOut(arr1, arr2);
-//            else if (arr1 == null && arr2 == null && arr3 != null)
-//                return MassOut(arr3);
-//            else if (arr1 == null && arr2 != null && arr3 == null)
-//                return MassOut(arr2);
-//            else if (arr1 != null && arr2 == null && arr3 != null)
-//                return MassOut(arr1);
-//            else
-//                return MassOut();
-//        } catch (Exception e) {
-//            System.out.println("Ошибка: " + e);
-//            return null;
-//        }
-//    }
-
 }

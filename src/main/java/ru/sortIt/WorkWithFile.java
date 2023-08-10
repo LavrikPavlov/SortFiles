@@ -10,7 +10,7 @@ public class WorkWithFile {
 
 
     private File file1, file2, file3;
-    private final String path = new File(SortFiles.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getParent() + "//";
+    private final String path = new File(SortDataFiles.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getParent() + "//";
 
 
     public WorkWithFile(String name1, String name2, String name3) {

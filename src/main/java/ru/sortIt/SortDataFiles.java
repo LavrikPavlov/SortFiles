@@ -3,7 +3,7 @@ package ru.sortIt;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class SortFiles {
+public class SortDataFiles {
 
     public static void main(String[] args) {
         try {
@@ -24,9 +24,10 @@ public class SortFiles {
             } else
                 throw new Exception("Ошибка в выборе мода");
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.out.println("Ошибка: " + e);
         }
     }
+
 
     private static int[] intWork(WorkWithFile wwf, String[] args) {
         WorkWithArrayInt wwi = new WorkWithArrayInt();
@@ -57,6 +58,7 @@ public class SortFiles {
         return arrOut;
     }
 
+
     private static String[] stringWork(WorkWithFile wwf, String[] args) {
         String[][] arrs = wwf.openFileString();
         System.out.println("\nСодержание файлов:");
@@ -86,6 +88,7 @@ public class SortFiles {
 
         return arrOut;
     }
+
 
     private static String[] argsWork(String[] args) {
         String[] argsNew = new String[6];

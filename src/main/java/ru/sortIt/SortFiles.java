@@ -6,44 +6,85 @@ import java.util.Objects;
 public class SortFiles {
 
     public static void main(String[] args) {
+        try {
+            args = argsWork(args);
+            for (int i = 0; i < args.length; i++) {
+                System.out.println("Аргумент: " + i + " - " + args[i]);
+            }
+            System.out.print("\n");
 
-        args = argsWork(args);
+            WorkWithFile wwf = new WorkWithFile(args[3], args[4], args[5]);
 
-        for (int i = 0; i < args.length; i++) {
-            System.out.println("Аргумент: " + i + " - " + args[i]);
+            if (Objects.equals(args[0], "-s")) {
+                String[] arrOut = stringWork(wwf, args);
+                wwf.writeInFile(arrOut, args[2]);
+            } else if (Objects.equals(args[0], "-i")) {
+                int[] arrOut = intWork(wwf, args);
+                wwf.writeInFile(arrOut, args[2]);
+            } else
+                throw new Exception("Ошибка в выборе мода");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
-        System.out.print("\n");
+    }
 
-        WorkWithFile wwf = new WorkWithFile(args[3], args[4], args[5]);
-        WorkWithArrayInt wwa = new WorkWithArrayInt();
-
-        int[][] arrs = wwf.openFile();
-
+    private static int[] intWork(WorkWithFile wwf, String[] args) {
+        WorkWithArrayInt wwi = new WorkWithArrayInt();
+        int[][] arrs = wwf.openFileInt();
         System.out.println("\nСодержание файлов:");
         for (int i = 0; i <= arrs.length - 1; i++) {
             System.out.println("File {" + (i + 1) + "}: " + Arrays.toString(arrs[i]));
         }
-        System.out.print("-----\n");
+        System.out.println("-----\n");
 
         for (int i = 0; i <= arrs.length - 1; i++) {
             if (arrs[i] != null)
-                System.out.println("File {" + (i + 1) + "}:" + Arrays.toString(wwa.sortMass(arrs[i])));
+                System.out.println("File {" + (i + 1) + "}:" + Arrays.toString(wwi.sortMass(arrs[i])));
         }
-        System.out.print("-----\n");
-
-        int[] arrOut = wwa.combineMassOut(wwa.sortMass(arrs[0]), wwa.sortMass(arrs[1]), wwa.sortMass(arrs[2]));
-        System.out.println("Слияние массива: \n" + Arrays.toString(arrOut));
         System.out.println("-----\n");
 
+        int[] arrOut = wwi.combineMassOut(wwi.sortMass(arrs[0]), wwi.sortMass(arrs[1]), wwi.sortMass(arrs[2]));
+        System.out.println("\nСлияние массива: \n" + Arrays.toString(arrOut));
+        System.out.println("-----");
+
         if (Objects.equals(args[1], "-d")) {
-            arrOut = wwa.sortMass(arrOut);
+            arrOut = wwi.sortMass(arrOut);
             System.out.println("Ответ по убыванию: " + Arrays.toString(arrOut));
         } else {
-            arrOut = wwa.reverseMass(arrOut);
+            arrOut = wwi.reverseMass(arrOut);
+            System.out.println("Ответ по возрастанию: " + Arrays.toString(arrOut));
+        }
+        return arrOut;
+    }
+
+    private static String[] stringWork(WorkWithFile wwf, String[] args) {
+        String[][] arrs = wwf.openFileString();
+        System.out.println("\nСодержание файлов:");
+        for (int i = 0; i < arrs.length; i++) {
+            System.out.println("File {" + (i + 1) + "}: " + Arrays.toString(arrs[i]));
+        }
+        System.out.println("-----");
+
+        WorkWithArrayString wws = new WorkWithArrayString();
+
+        for (int i = 0; i < arrs.length; i++) {
+            if (arrs[i] != null) {
+                System.out.println("File {" + (i + 1) + "}: " + Arrays.toString(wws.sortMass(arrs[i])));
+            }
+        }
+        System.out.println("-----");
+
+        String[] arrOut = wws.combineMassOut(arrs[0], arrs[1], arrs[2]);
+
+        if (Objects.equals(args[1], "-d")) {
+            arrOut = wws.sortMass(arrOut);
+            System.out.println("Ответ по убыванию: " + Arrays.toString(arrOut));
+        } else {
+            arrOut = wws.reverseMass(arrOut);
             System.out.println("Ответ по возрастанию: " + Arrays.toString(arrOut));
         }
 
-        wwf.writeInFile(arrOut, args[2]);
+        return arrOut;
     }
 
     private static String[] argsWork(String[] args) {
@@ -64,6 +105,7 @@ public class SortFiles {
         }
         return argsNew;
     }
+
 
     private static int RandNumber() {
         double num = Math.random();

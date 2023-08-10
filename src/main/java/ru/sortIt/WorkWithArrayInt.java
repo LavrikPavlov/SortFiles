@@ -4,29 +4,9 @@ public class WorkWithArrayInt {
 
     public int[] combineMassOut(int[] arr1, int[] arr2, int[] arr3) {
         try {
-            return CheckNullArrays(arr1, arr2, arr3);
+            return checkNullArrays(arr1, arr2, arr3);
         } catch (Exception e) {
             System.out.println("Ошибка: " + e + "\n");
-            return null;
-        }
-    }
-
-
-    public static int[] combineMassOut(int[] arr1, int[] arr2) {
-        try {
-            return CheckNullArrays(arr1, arr2);
-        } catch (Exception e) {
-            System.out.println("Ошибка: " + e);
-            return null;
-        }
-    }
-
-
-    public static int[] combineMassOut(int[] arr) {
-        try {
-            return CheckNullArrays(arr);
-        } catch (Exception e) {
-            System.out.println("Ошибка: " + e);
             return null;
         }
     }
@@ -58,7 +38,7 @@ public class WorkWithArrayInt {
     }
 
 
-    public int[] SortMass(int[] arr) {
+    public int[] sortMass(int[] arr) {
         try {
             for (int i = 0; i < arr.length; i++) {
                 int num;
@@ -70,7 +50,7 @@ public class WorkWithArrayInt {
                     }
                 }
             }
-            arr = DeleteDublicateArray(arr);
+            arr = deleteDublicateArray(arr);
             return arr;
         } catch (Exception e) {
             System.out.println("Ошибка: " + e + "\n");
@@ -79,7 +59,7 @@ public class WorkWithArrayInt {
     }
 
 
-    private static int[] DeleteDublicateArray(int[] arr) {
+    private static int[] deleteDublicateArray(int[] arr) {
         try {
             int countDouble = 0;
             for (int i = 0; i < arr.length - 1; i++) {
@@ -107,7 +87,7 @@ public class WorkWithArrayInt {
     }
 
 
-    private static int[] CheckNullArrays(int[]... arrays) {
+    private static int[] checkNullArrays(int[]... arrays) {
         try {
             int totalLength = 0;
             for (int[] arr : arrays) {

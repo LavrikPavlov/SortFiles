@@ -1,12 +1,11 @@
 package ru.sortIt;
 
-import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Objects;
 
 public class SortFiles {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
 
         args = argsWork(args);
 
@@ -21,23 +20,23 @@ public class SortFiles {
         int[][] arrs = wwf.openFile();
 
         System.out.println("\nСодержание файлов:");
-        for(int i = 0; i <= arrs.length - 1; i++) {
-            System.out.println("File {"+ (i+1) +"}: " + Arrays.toString(arrs[i]));
+        for (int i = 0; i <= arrs.length - 1; i++) {
+            System.out.println("File {" + (i + 1) + "}: " + Arrays.toString(arrs[i]));
         }
         System.out.print("-----\n");
 
-        for(int i = 0; i <= arrs.length - 1; i++) {
-            if(arrs[i] != null)
-                System.out.println("File {"+(i+1)+"}:" + Arrays.toString(wwa.SortMass(arrs[i])));
+        for (int i = 0; i <= arrs.length - 1; i++) {
+            if (arrs[i] != null)
+                System.out.println("File {" + (i + 1) + "}:" + Arrays.toString(wwa.sortMass(arrs[i])));
         }
         System.out.print("-----\n");
 
-        int[] arrOut = wwa.combineMassOut(wwa.SortMass(arrs[0]), wwa.SortMass(arrs[1]), wwa.SortMass(arrs[2]));
+        int[] arrOut = wwa.combineMassOut(wwa.sortMass(arrs[0]), wwa.sortMass(arrs[1]), wwa.sortMass(arrs[2]));
         System.out.println("Слияние массива: \n" + Arrays.toString(arrOut));
         System.out.println("-----\n");
 
         if (Objects.equals(args[1], "-d")) {
-            arrOut = wwa.SortMass(arrOut);
+            arrOut = wwa.sortMass(arrOut);
             System.out.println("Ответ по убыванию: " + Arrays.toString(arrOut));
         } else {
             arrOut = wwa.reverseMass(arrOut);

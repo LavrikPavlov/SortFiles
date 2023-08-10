@@ -1,4 +1,4 @@
-package org.example;
+package ru.sortIt;
 
 
 import java.io.*;
@@ -39,10 +39,9 @@ public class WorkWithFile {
     }
 
 
-    public void writeInFile(int[] arr) {
-        String nameFile = "out.txt";
+    public void writeInFile(int[] arr, String nameFile) {
+        File fileOut = new File(path + nameFile);
         try {
-            File fileOut = new File(path + nameFile);
             if (!fileOut.exists()) {
                 fileOut.createNewFile();
             }
@@ -57,6 +56,9 @@ public class WorkWithFile {
 
         } catch (IOException e) {
             System.out.println("Ошибка: " + e);
+        } catch (ArrayIndexOutOfBoundsException e){
+            int[] arrEx = new int[] {0};
+            writeInFile(arrEx, path + "outEx.txt");
         }
     }
 

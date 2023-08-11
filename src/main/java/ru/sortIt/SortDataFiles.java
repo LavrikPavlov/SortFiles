@@ -9,7 +9,7 @@ public class SortDataFiles {
         try {
             args = argsWork(args);
             for (int i = 0; i < args.length; i++) {
-                System.out.println("Аргумент: " + i + " - " + args[i]);
+                System.out.println("Аргумент: " + (i + 1) + " - " + args[i]);
             }
             System.out.print("\n");
 

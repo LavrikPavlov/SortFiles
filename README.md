@@ -1,4 +1,4 @@
-# SortFiles
+## SortFiles
 
 Проект создан в рамках тестового задания для Центра Финансовых Технологий (ЦФТ).<br>
 Задание находиться по данной [ссылке](https://drive.google.com/file/d/10qhGjn7biURykP8hIcT6NJHoGX-WOHUh/view).

@@ -13,9 +13,15 @@ public class Main {
         try {
             args = argsWork(args);
             for (int i = 0; i < args.length; i++) {
-                System.out.println("Аргумент: " + (i + 1) + " - " + args[i]);
+                if(args[i] != null)
+                    System.out.println("Аргумент: " + (i + 1) + " - " + args[i]);
+                else
+                    System.out.println("Аргумент: " + (i + 1) + " - Отсутствует");
             }
             System.out.print("\n");
+
+            if(args[2] == null)
+                args[2] = "out.txt";
 
             WorkWithFile wwf = new WorkWithFile(args[3], args[4], args[5]);
 

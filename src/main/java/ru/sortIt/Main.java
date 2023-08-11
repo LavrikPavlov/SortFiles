@@ -6,24 +6,17 @@ import ru.sortIt.workClasses.WorkWithFile;
 
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.Scanner;
 
 public class Main {
+
 
     public static void main(String[] args) {
         try {
             args = argsWork(args);
-            for (int i = 0; i < args.length; i++) {
-                if(args[i] != null)
-                    System.out.println("Аргумент: " + (i + 1) + " - " + args[i]);
-                else
-                    System.out.println("Аргумент: " + (i + 1) + " - Отсутствует");
-            }
-            System.out.print("\n");
-
-            if(args[2] == null)
-                args[2] = "out.txt";
-
             WorkWithFile wwf = new WorkWithFile(args[3], args[4], args[5]);
+
+            if (args[2] == null) args[2] = "out.txt";
 
             if (Objects.equals(args[0], "-s")) {
                 String[] arrOut = stringWork(wwf, args);
@@ -31,12 +24,16 @@ public class Main {
             } else if (Objects.equals(args[0], "-i")) {
                 int[] arrOut = intWork(wwf, args);
                 wwf.writeInFile(arrOut, args[2]);
-            } else
-                throw new Exception("Ошибка в выборе мода");
+            } else if (Objects.equals(args[0], "help"))
+                throw new Exception("");
+            else
+                throw new Exception("Отсутсвуют обязательные аргументы");
         } catch (Exception e) {
-            System.out.println("Ошибка: " + e);
+            System.out.println(e.getMessage() + "\n");
+            helpWork();
         }
     }
+
 
 
     private static int[] intWork(WorkWithFile wwf, String[] args) {
@@ -49,8 +46,7 @@ public class Main {
         System.out.println("-----\n");
 
         for (int i = 0; i <= arrs.length - 1; i++) {
-            if (arrs[i] != null)
-                System.out.println("File {" + (i + 1) + "}:" + Arrays.toString(wwi.sortMass(arrs[i])));
+            if (arrs[i] != null) System.out.println("File {" + (i + 1) + "}:" + Arrays.toString(wwi.sortMass(arrs[i])));
         }
         System.out.println("-----\n");
 
@@ -101,15 +97,13 @@ public class Main {
 
 
     private static String[] argsWork(String[] args) {
-        String[] argsNew = new String[6];
+        String[] argsNew = new String[7];
         int j = 3;
-        for (int i = 0; i <= (args.length - 1); i++) {
-            if (Objects.equals(args[i], "-i") || Objects.equals(args[i], "-s"))
+        for (int i = 0; i < args.length; i++) {
+            if (Objects.equals(args[i], "-i") || Objects.equals(args[i], "-s") || Objects.equals(args[i], "help"))
                 argsNew[0] = args[i];
-            else if (Objects.equals(args[i], "-a") || Objects.equals(args[i], "-d"))
-                argsNew[1] = args[i];
-            else if (Objects.equals(args[i], "in.txt") || Objects.equals(args[i], "in1.txt") ||
-                    Objects.equals(args[i], "in2.txt") || Objects.equals(args[i], "in3.txt")) {
+            else if (Objects.equals(args[i], "-a") || Objects.equals(args[i], "-d")) argsNew[1] = args[i];
+            else if (Objects.equals(args[i], "in.txt") || Objects.equals(args[i], "in1.txt") || Objects.equals(args[i], "in2.txt") || Objects.equals(args[i], "in3.txt")) {
                 argsNew[j] = args[i];
                 j += 1;
             } else {
@@ -118,6 +112,16 @@ public class Main {
         }
         return argsNew;
     }
+
+    private static void helpWork() {
+        System.out.println("Аргумент 1: \"-i\" - работа с int | \"-s\" - работа с string");
+        System.out.println("Аргумент 2: \"-d\" - по убыванию | default - по возрастанию");
+        System.out.println("Аргумент 3: \"nameFile.txt\" - наимнование выходного файла | default - выходной файл \"out.txt\"");
+        System.out.println("Аргумент 4: \"in1.txt\" - наимнование входного файла");
+        System.out.println("Аргумент 5: \"in2.txt\" - наимнование входного файла");
+        System.out.println("Аргумент 6: \"in3.txt\" - наимнование входного файла");
+    }
+
 
 
 }

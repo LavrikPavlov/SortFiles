@@ -34,6 +34,7 @@ public class Main {
     }
 
 
+
     private static int[] intWork(WorkWithFile wwf, String[] args) {
         WorkWithArrayInt wwi = new WorkWithArrayInt();
         int[][] arrs = wwf.openFileInt();
@@ -110,6 +111,16 @@ public class Main {
         }
         return argsNew;
     }
+
+    private static void helpWork() {
+        System.out.println("Аргумент 1: \"-i\" - работа с int | \"-s\" - работа с string");
+        System.out.println("Аргумент 2: \"-d\" - по убыванию | default - по возрастанию");
+        System.out.println("Аргумент 3: \"nameFile.txt\" - наимнование выходного файла | default - выходной файл \"out.txt\"");
+        System.out.println("Аргумент 4: \"in1.txt\" - наимнование входного файла");
+        System.out.println("Аргумент 5: \"in2.txt\" - наимнование входного файла");
+        System.out.println("Аргумент 6: \"in3.txt\" - наимнование входного файла");
+    }
+
 
 
     private static void helpWork() {

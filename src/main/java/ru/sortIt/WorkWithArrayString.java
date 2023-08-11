@@ -43,7 +43,7 @@ public class WorkWithArrayString {
 
     public String[] sortMass(String[] arr) {
         try {
-            mergeSort(arr, 0, arr.length - 1);
+            mergeSort(arr, 0, arr.length - 1); //8
             arr = deleteDuplicateArray(arr);
             return arr;
         } catch (Exception e) {
@@ -53,32 +53,32 @@ public class WorkWithArrayString {
     }
 
 
-    private static void mergeSort(String[] arr, int left, int right) {
-        if (left < right) {
-            int middle = (left + right) / 2;
-            mergeSort(arr, left, middle);
-            mergeSort(arr, middle + 1, right);
-            merge(arr, left, middle, right);
+    private static void mergeSort(String[] arr, int leftIndex, int rightIndex) {
+        if (leftIndex < rightIndex) {
+            int middle = (leftIndex + rightIndex) / 2;
+            mergeSort(arr, leftIndex, middle);
+            mergeSort(arr, middle + 1, rightIndex);
+            merge(arr, leftIndex, middle, rightIndex);
         }
     }
 
 
-    private static void merge(String[] arr, int left, int middle, int right) {
-        int n1 = middle - left + 1;
-        int n2 = right - middle;
+    private static void merge(String[] arr, int leftIndex, int middle, int rightIndex) {
+        int n1 = middle - leftIndex + 1;
+        int n2 = rightIndex - middle;
 
         String[] leftArr = new String[n1];
         String[] rightArr = new String[n2];
 
         for (int i = 0; i < n1; i++) {
-            leftArr[i] = arr[left + i];
+            leftArr[i] = arr[leftIndex + i];
         }
-        for (int j = 0; j < n2; j++) {
-            rightArr[j] = arr[middle + 1 + j];
+        for (int i = 0; i < n2; i++) {
+            rightArr[i] = arr[middle + 1 + i];
         }
 
         int i = 0, j = 0;
-        int k = left;
+        int k = leftIndex;
         while (i < n1 && j < n2) {
             if (leftArr[i].compareTo(rightArr[j]) <= 0) {
                 arr[k] = leftArr[i];

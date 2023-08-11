@@ -104,7 +104,6 @@ public class WorkWithFile {
             arr3 = workWithFileInt(file3);
         else
             arr3 = null;
-        System.out.println("\n" + file1 + " " + file2 + " " + file3);
         return new int[][]{arr1, arr2, arr3};
     }
 
@@ -127,7 +126,6 @@ public class WorkWithFile {
             arr3 = workWithFileString(file3);
         else
             arr3 = null;
-        System.out.println("\n" + file1 + " " + file2 + " " + file3);
         return new String[][]{arr1, arr2, arr3};
     }
 

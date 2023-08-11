@@ -1,4 +1,4 @@
-package ru.sortIt;
+package ru.sortIt.workClasses;
 
 import java.util.ArrayList;
 import java.util.List;

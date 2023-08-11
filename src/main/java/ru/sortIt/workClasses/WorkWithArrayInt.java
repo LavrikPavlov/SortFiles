@@ -1,4 +1,4 @@
-package ru.sortIt;
+package ru.sortIt.workClasses;
 
 public class WorkWithArrayInt {
 

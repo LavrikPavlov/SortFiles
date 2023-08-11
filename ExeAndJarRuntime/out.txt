@@ -1,9 +1,0 @@
-appple
-class
-dog
-fake
-java
-krasiv
-lion
-oop
-panel_cmd

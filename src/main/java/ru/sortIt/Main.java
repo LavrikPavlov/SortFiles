@@ -1,9 +1,13 @@
 package ru.sortIt;
 
+import ru.sortIt.workClasses.WorkWithArrayInt;
+import ru.sortIt.workClasses.WorkWithArrayString;
+import ru.sortIt.workClasses.WorkWithFile;
+
 import java.util.Arrays;
 import java.util.Objects;
 
-public class SortDataFiles {
+public class Main {
 
     public static void main(String[] args) {
         try {
@@ -107,13 +111,6 @@ public class SortDataFiles {
             }
         }
         return argsNew;
-    }
-
-
-    private static int RandNumber() {
-        double num = Math.random();
-        num *= 10;
-        return (int) num;
     }
 
 

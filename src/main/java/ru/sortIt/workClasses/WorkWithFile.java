@@ -1,6 +1,7 @@
-package ru.sortIt;
+package ru.sortIt.workClasses;
 
 
+import ru.sortIt.Main;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ public class WorkWithFile {
 
 
     private File file1, file2, file3;
-    private final String path = new File(SortDataFiles.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getParent() + "//";
+    private final String path = new File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getParent() + "//";
 
 
     public WorkWithFile(String name1, String name2, String name3) {
@@ -85,7 +86,7 @@ public class WorkWithFile {
     }
 
 
-    protected int[][] openFileInt() {
+    public int[][] openFileInt() {
         int[] arr1;
         if (file1 != null)
             arr1 = workWithFileInt(file1);
@@ -108,7 +109,7 @@ public class WorkWithFile {
     }
 
 
-    protected String[][] openFileString() {
+    public String[][] openFileString() {
         String[] arr1;
         if (file1 != null)
             arr1 = workWithFileString(file1);

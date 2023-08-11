@@ -6,7 +6,6 @@ import ru.sortIt.workClasses.WorkWithFile;
 
 import java.util.Arrays;
 import java.util.Objects;
-import java.util.Scanner;
 
 public class Main {
 

@@ -43,7 +43,7 @@ public class WorkWithArrayString {
 
     public String[] sortMass(String[] arr) {
         try {
-            mergeSort(arr, 0, arr.length - 1); //8
+            mergeSort(arr, 0, arr.length - 1);
             arr = deleteDuplicateArray(arr);
             return arr;
         } catch (Exception e) {
